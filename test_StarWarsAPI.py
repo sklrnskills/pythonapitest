@@ -1,6 +1,6 @@
 import requests
 import pytest
-import commonMethods
+import databook
 import pytest_html_reporter
 
 "to install dependencies use the command : pip install -r requirements.txt"
