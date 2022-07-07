@@ -1,18 +1,18 @@
 import requests
 import pytest
-import databook
+import dataBook
 import pytest_html_reporter
 
 "to install dependencies use the command : pip install -r requirements.txt"
 "Test run command with report :  pytest -s --html-report=./report/testReport.html"
 
 
-@pytest.mark.parametrize("character_type,search_text,expected_result", [('planets', 'tat', 'Tatooine')])
-def test_search_people_or_planet(character_type, search_text, expected_result):
-    url = commonMethods.get_url('B3')
-    payload = {'search': search_text}
-    if character_type == 'planets':
-        url = url.replace('people', character_type)
+@pytest.mark.parametrize("type_of_character,find_text,expected_result", [('planets', 'tat', 'Tatooine')])
+def test_search_people_or_planet(type_of_character, find_text, expected_result):
+    url = dataBook.get_url('B3')
+    payload = {'search': find_text}
+    if type_of_character == 'planets':
+        url = url.replace('people', type_of_character)
 
     response = requests.get(url, params=payload)
     if response.ok:
@@ -21,8 +21,7 @@ def test_search_people_or_planet(character_type, search_text, expected_result):
         assert response.headers['content-type'] == 'application/json'
 
     else:
-        assert False, "wrong status code received from resource"
-
+        assert False, " the expected response is not received, please check your input "
 
 def test_status_codes():
     url1 = "https://swapi.dev/api/people/1"
@@ -41,8 +40,8 @@ def test_status_codes():
     assert requests.patch(url1, headers=headers, data=dummy_data).status_code == 405
 
 
-def test_list_all_character_names():
-    url = commonMethods.get_url('B2')
+def test_display_all_characters():
+    url = dataBook.get_url('B2')
 
     response = requests.get(url)
     while True:
