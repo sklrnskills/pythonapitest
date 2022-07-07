@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_print_file_names():
+def test_find_file_names():
     with open("small.dat", mode="r") as f:
         count = 0
         f.seek(0)
@@ -16,7 +16,7 @@ def test_print_file_names():
                         print(s)
                         count += 1
             line = f.readline()
-    print("total no. of files = {}".format(count))
+    print("total count of files = {}".format(count))
 
 
-#test_print_file_names()
+#test_find_file_names()
