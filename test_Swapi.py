@@ -4,8 +4,7 @@ import commonMethods
 import pytest_html_reporter
 
 "to install dependencies use the command : pip install -r requirements.txt"
-"use the following command to run the tests and get console output as well plus generate html report as well"
-"command :  pytest -s --html-report=./report/testReport.html"
+"Test run command with report :  pytest -s --html-report=./report/testReport.html"
 
 
 @pytest.mark.parametrize("character_type,search_text,expected_result", [('planets', 'tat', 'Tatooine')])
@@ -27,14 +26,14 @@ def test_search_people_or_planet(character_type, search_text, expected_result):
 
 def test_status_codes():
     url1 = "https://swapi.dev/api/people/1"
-    url2 = "https://swapi.dev/api/people/230"
+    url2 = "https://swapi.dev/api/people/90"
     headers = {"Content-Type": "application/json"}
     dummy_data = """
     {
-      "Id": 43215,
-      "name": "John Doe",
-      "Quantity": 3,
-      "Price": 20.00
+      "Id": 4321,
+      "name": "Kate Winslet",
+      "Quantity": 6,
+      "Price": 80.00
     }
     """
     assert requests.get(url1).status_code == 200
@@ -51,7 +50,7 @@ def test_list_all_character_names():
             json_response = response.json()
 
             if json_response['next'] is None:
-                print("Total StarWars characters = " + str(json_response['count']))
+                print("Total cast of starwars = " + str(json_response['count']))
                 return
             length = len(json_response['results'])
 
