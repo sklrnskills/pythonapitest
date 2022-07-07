@@ -9,6 +9,6 @@ def get_url(column_name):
         workbook.close()
         return cell
     except FileNotFoundError as ex:
-        print("Exception!!.Testdata file maybe Missing. ", str(ex))
+        print("Exception!!.Testdata file is Missing or invalid filename used. ", str(ex))
 
 
